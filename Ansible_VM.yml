@@ -1,0 +1,21 @@
+---
+Name: vm using template
+Hosts: localhost
+Connection: local
+Gather_facts: no
+
+Tasks:
+  Name:  create windows vm 
+Vmware_guest: 
+      Hostname: 192.168.106.9
+      Username: root@vsphere.local
+      Password:  anuj@123
+      Validate_certs: false
+      Name:  test_vm
+      Template:  windows10
+      Datacenter:  datacenter1
+Datastore:  storage1
+Folder: winVM
+State: poweredon
+Ip:  168.123.152.1 
+# (wait_for_the_ip : no) if this option is given then any ip is given to the vm
