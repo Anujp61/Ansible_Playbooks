@@ -1,0 +1,15 @@
+# This playbook is for installing git tool in windows 
+
+- Name: install git
+  Host: win
+  Become: false
+  Gather_ facts: false
+  Vars: 
+     package:
+        - git
+  Tasks: 
+    Name: install package
+    Chocolatey.chocolatey.win_chocolatey:
+               Name: “{{ package }}”
+               State: present
+
