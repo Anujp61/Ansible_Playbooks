@@ -1,0 +1,43 @@
+---
+- name: ec2
+  hosts: localhost
+  connection: local
+  tasks:
+
+   - name: first vm(ubuntu_22.04)
+     ec2:
+        instance_type: t2.micro
+        key_name: linux
+        image: ami-09d56f8956ab235b3
+        region: us-east-1
+        group: launch-wizard-3
+        count: 1
+        vpc_subnet_id: subnet-0da2d9c71934dc1f1
+        wait: yes
+        assign_public_ip: yes
+
+
+
+   - name: second vm (windows)
+     ec2:
+        instance_type: t2.micro
+        key_name: windows
+        image: ami-08ed5c5dd62794ec0
+        region: us-east-1
+        group: launch-wizard-3
+        count: 1
+        vpc_subnet_id: subnet-0da2d9c71934dc1f1
+        wait: yes
+        assign_public_ip: yes
+
+
+   - name: third vm(ubuntu_20.04)
+     ec2:
+        instance_type: t2.micro
+        key_name: linux
+        image:  ami-0c4f7023847b90238
+        region: us-east-1
+        group: launch-wizard-3
+        count: 1
+        vpc_subnet_id: subnet-0da2d9c71934dc1f1
+        wait: yes
